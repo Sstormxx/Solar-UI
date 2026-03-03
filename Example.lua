@@ -1,4 +1,4 @@
-local Solar = loadstring(game:HttpGet("your-url-here"))()
+local Solar = loadstring(game:HttpGet("https://raw.githubusercontent.com/Sstormxx/Solar-UI/refs/heads/main/UI.lua"))()
 
 local Window = Solar:CreateWindow({
     Name = "My Script",
