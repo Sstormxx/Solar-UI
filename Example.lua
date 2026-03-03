@@ -86,3 +86,19 @@ Solar:Notify({
     Type = "Success",
     Duration = 5
 })
+
+| Category   | Function                 | Purpose              |
+| ---------- | ------------------------ | -------------------- |
+| **Global** | `Solar:Notify()`         | Show notifications   |
+| **Window** | `Solar:CreateWindow()`   | Create main UI       |
+| **Window** | `Window:SetBackground()` | Customize background |
+| **Window** | `Window:CreateTab()`     | Create sidebar tab   |
+| **Tab**    | `Tab:CreateSection()`    | Group divider        |
+| **Tab**    | `Tab:CreateButton()`     | Clickable button     |
+| **Tab**    | `Tab:CreateToggle()`     | On/Off switch        |
+| **Tab**    | `Tab:CreateSlider()`     | Value slider         |
+| **Tab**    | `Tab:CreateDropdown()`   | Selection menu       |
+| **Tab**    | `Tab:CreateInput()`      | Text input box       |
+| **Tab**    | `Tab:CreateKeybind()`    | Keyboard shortcut    |
+| **Tab**    | `Tab:CreateLabel()`      | Static text          |
+| **Tab**    | `Tab:CreateParagraph()`  | Titled text block    |
