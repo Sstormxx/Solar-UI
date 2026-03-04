@@ -1,43 +1,31 @@
 local Solar = loadstring(game:HttpGet("https://raw.githubusercontent.com/Sstormxx/Solar-UI/refs/heads/main/UI.lua"))()
 
--- Create Window
 local Window = Solar:CreateWindow({
-    Name = "My Script",
-    LoadingTitle = "Solar Interface",
-    Subtitle = "v2.1"
+    Name = "My Script"
 })
 
--- Customize Background
-Window:SetBackground({
-    Color = Color3.fromRGB(15, 15, 20),
-    Gradient = ColorSequence.new({
-        ColorSequenceKeypoint.new(0, Color3.fromRGB(20, 20, 25)),
-        ColorSequenceKeypoint.new(1, Color3.fromRGB(40, 25, 55))
-    })
+local MainTab = Window:CreateTab({
+    Name = "Main",
+    Icon = "7733970523"
 })
 
--- Create Tabs + Sections
-local MainTab = Window:CreateTab({Name = "Main", Icon = "7733970523"})
-MainTab:CreateSection("Configuration")
+MainTab:CreateSection("Player Mods")
 
--- Main Tab Components
-MainTab:CreateSection("Player Features")
-
-MainTab:CreateToggle({
+local CreateToggle = MainTab:CreateToggle({
     Name = "Toggle",
     Default = false,
-    Callback = function(v) 
-    -- Paste you're code
+    Callback = function(v)
+    -- Code here
     end
 })
 
 MainTab:CreateSlider({
     Name = "Slider",
-    Min = 16,
-    Max = 200,
-    Default = 16,
+    Min = 50,
+    Max = 300,
+    Default = 50,
     Callback = function(v)
-    -- Paste you're code
+    -- Code here
     end
 })
 
@@ -45,60 +33,56 @@ MainTab:CreateDropdown({
     Name = "Dropdown",
     Options = {"A", "B", "C"},
     Default = "A",
-    Callback = function(mode)
-    -- Paste you're code
+    Callback = function(loc)
+    -- Code here
     end
 })
 
 MainTab:CreateButton({
     Name = "Button",
     Callback = function()
-    -- Paste you're code
-        Solar:Notify({
-            Title = "Teleport",
-            Content = "Clicked successfully!",
-            Type = "Success",
-            Duration = 3
-        })
+    -- Code here
     end
 })
 
-MainTab:CreateInput({
-    Name = "Input",
-    Placeholder = "https://discord.com/api/webhooks/...",
-    Callback = function(url)
-    -- Paste you're code
-    end
+local SettingsTab = Window:CreateTab({
+    Name = "Settings",
+    Icon = "7733955511"
 })
 
 MainTab:CreateKeybind({
     Name = "Panic Key",
-    Default = Enum.KeyCode.Delete,
+    Default = Enum.KeyCode.P,
     Callback = function()
-    -- Paste you're code
+    -- Code here
     end
 })
 
--- Notification
-Solar:Notify({
-    Title = "Loaded",
-    Content = "Script loaded successfully!",
-    Type = "Success",
-    Duration = 5
+MainTab:CreateInput({
+    Name = "Webhook URL",
+    Placeholder = "https://discord.com/api/webhooks/...",
+    Callback = function(url)
+    -- Code here
+    end
 })
 
-| Category   | Function                 | Purpose              |
-| ---------- | ------------------------ | -------------------- |
-| **Global** | `Solar:Notify()`         | Show notifications   |
-| **Window** | `Solar:CreateWindow()`   | Create main UI       |
-| **Window** | `Window:SetBackground()` | Customize background |
-| **Window** | `Window:CreateTab()`     | Create sidebar tab   |
-| **Tab**    | `Tab:CreateSection()`    | Group divider        |
-| **Tab**    | `Tab:CreateButton()`     | Clickable button     |
-| **Tab**    | `Tab:CreateToggle()`     | On/Off switch        |
-| **Tab**    | `Tab:CreateSlider()`     | Value slider         |
-| **Tab**    | `Tab:CreateDropdown()`   | Selection menu       |
-| **Tab**    | `Tab:CreateInput()`      | Text input box       |
-| **Tab**    | `Tab:CreateKeybind()`    | Keyboard shortcut    |
-| **Tab**    | `Tab:CreateLabel()`      | Static text          |
-| **Tab**    | `Tab:CreateParagraph()`  | Titled text block    |
+MainTab:CreateLabel({
+    Text = "This is a Label",
+    Color = Color3.fromRGB(150, 150, 150),
+    Size = 12
+})
+
+| Category   | Function                | Purpose                  | Parameters                                                                      | Returns                                             |
+| ---------- | ----------------------- | ------------------------ | ------------------------------------------------------------------------------- | --------------------------------------------------- |
+| **Global** | `Solar:CreateWindow()`  | Create main UI window    | `{Name: string}`                                                                | `Window` object                                     |
+| **Global** | `Solar:Notify()`        | Show notification        | `{Title: string, Content: string, Duration: number}`                            | `void`                                              |
+| **Window** | `Window:CreateTab()`    | Create navigation tab    | `{Name: string, Icon: string}`                                                  | `Tab` object                                        |
+| **Tab**    | `Tab:CreateSection()`   | Create group divider     | `name: string`                                                                  | `void`                                              |
+| **Tab**    | `Tab:CreateButton()`    | Create clickable button  | `{Name: string, Callback: function}`                                            | `Frame`                                             |
+| **Tab**    | `Tab:CreateToggle()`    | Create on/off switch     | `{Name: string, Default: boolean, Callback: function}`                          | `{Set: function, Get: function}`                    |
+| **Tab**    | `Tab:CreateSlider()`    | Create value slider      | `{Name: string, Min: number, Max: number, Default: number, Callback: function}` | `{Set: function, Get: function}`                    |
+| **Tab**    | `Tab:CreateDropdown()`  | Create selection menu    | `{Name: string, Options: table, Default: string, Callback: function}`           | `{Set: function, Get: function, Refresh: function}` |
+| **Tab**    | `Tab:CreateInput()`     | Create text input        | `{Name: string, Placeholder: string, Default: string, Callback: function}`      | `{Set: function, Get: function}`                    |
+| **Tab**    | `Tab:CreateKeybind()`   | Create keyboard shortcut | `{Name: string, Default: Enum.KeyCode, Callback: function}`                     | `{Set: function, Get: function}`                    |
+| **Tab**    | `Tab:CreateLabel()`     | Create static text       | `{Text: string, Color: Color3, Size: number, Bold: boolean, Alignment: Enum}`   | `{Set: function, Get: function}`                    |
+| **Tab**    | `Tab:CreateParagraph()` | Create titled text block | `{Title: string, Content: string}`                                              | `{SetTitle: function, SetContent: function}`        |
